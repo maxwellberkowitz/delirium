@@ -1,3 +1,6 @@
+# Data
+confocal_all_patient_phys_data.txt
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
