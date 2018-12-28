@@ -1,6 +1,6 @@
 import numpy as np
 import pandas as pd
-
+from filling_missing_data import fill_and_average
 
 np.random.seed(7000000)  # Generate the same labels every time, split into train/cv/test set consistently
 
@@ -119,13 +119,13 @@ def get_data_for_splits(df, train_subject_nums, cv_subject_nums, test_subject_nu
     """
     train_data = pd.DataFrame(columns=df.columns)
     for subject_number in train_subject_nums:
-        train_data = train_data.append(get_subject_data(df, subject_number), ignore_index=True)
+        train_data = train_data.append(fill_and_average(get_subject_data(df, subject_number)), ignore_index=True)
     cv_data = pd.DataFrame(columns=df.columns)
     for subject_number in cv_subject_nums:
-        cv_data = cv_data.append(get_subject_data(df, subject_number), ignore_index=True)
+        cv_data = cv_data.append(fill_and_average(get_subject_data(df, subject_number)), ignore_index=True)
     test_data = pd.DataFrame(columns=df.columns)
     for subject_number in test_subject_nums:
-        test_data = test_data.append(get_subject_data(df, subject_number), ignore_index=True)
+        test_data = test_data.append(fill_and_average(get_subject_data(df, subject_number)), ignore_index=True)
     return train_data, cv_data, test_data
 
 
